@@ -23,6 +23,8 @@ export class TimelineComponent implements OnInit {
 
   selectedDay: Day;
 
+  formattedDay: '';
+
   constructor(
     private router: Router,
     private timelineService: TimelineService
