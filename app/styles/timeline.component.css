@@ -1,0 +1,23 @@
+div.show-grid > div {
+  border: 1px solid black;
+}
+
+div.week > div {
+  min-height: 100px;
+}
+
+div.day {
+  background-color: powderblue;
+}
+
+div.day.selected {
+  background-color: lightcyan;
+}
+
+div.day-details {
+  padding-top: 50px;
+}
+
+.day-icon {
+  display: inline-block;
+}
