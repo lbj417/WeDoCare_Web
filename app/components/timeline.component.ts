@@ -32,7 +32,9 @@ export class TimelineComponent implements OnInit {
 
   getTimeline() {
     this.timelineService.getTimeline()
-      .then(timeline => this.timeline = timeline);
+      .then(timeline => {
+        this.timeline = timeline;
+      });
   }
 
   ngOnInit() {
