@@ -1,5 +1,6 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 import { TimelineComponent } from './components/timeline.component';
+import { QuestionnaireComponent } from './components/questionnaire.component';
 
 const routes: RouterConfig = [
   {
@@ -10,6 +11,10 @@ const routes: RouterConfig = [
   {
     path: 'timeline',
     component: TimelineComponent
+  },
+  {
+    path: 'questionnaire/:id',
+    component: QuestionnaireComponent
   }
 ];
 

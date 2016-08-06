@@ -1,0 +1,47 @@
+<div class="row">
+  <h1>{{questionnaire.category}} Questionnaire</h1>
+  <div class="col-md-6 col-md-offset-3">
+    <h2 style="text-align:center">Due {{questionnaire.displayDueDate}}</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <form name="questionnaire" ng-submit="submitForm()">
+      <div class="form-group" *ngFor="let question of questionnaire.questions">
+        <label>Question {{question.sequence}}</label><br/>
+        <span>{{question.question}}</span>
+        <div *ngIf="question.type === 'fillInTheBlank'">
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div *ngIf="question.type === 'multipleChoice'">
+          <div *ngFor="let choice of question.choices" class="input-group">
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                {{choice}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="question.type === 'trueFalse'">
+          <input type="text" class="form-control">
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+            True
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+            False
+        </div>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="">
+          E-mail me a copy of my responses
+        </label>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
