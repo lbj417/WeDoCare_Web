@@ -4,17 +4,13 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class TimelineService {
-  private getTimelineUrl = 'https://erdn9n97nk.execute-api.us-east-1.amazonaws.com/phase1/patient/61DCADA0-59AF-11E6-99DB-F58697120F48/timeline';
+export class QuestionnaireService {
+  private getQuestionnaireUrl = 'https://erdn9n97nk.execute-api.us-east-1.amazonaws.com/phase1/questionnaire/5C871DC0-59CF-11E6-BE93-5B26498BEA89';
 
   constructor(private http: Http) {}
 
-  getTimeline(startDate) {
-    let url = this.getTimelineUrl;
-    if (startDate) {
-      url += '?startDate=' + startDate;
-    }
-    return this.http.get(url)
+  getQuestionnaire() {
+    return this.http.get(this.getQuestionnaireUrl)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);

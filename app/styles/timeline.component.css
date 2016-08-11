@@ -1,4 +1,4 @@
-div.show-grid > div {
+div.show-grid > div.day {
   border: 1px solid black;
 }
 
@@ -7,11 +7,15 @@ div.week > div {
 }
 
 div.day {
-  background-color: powderblue;
+  background-color: #DCDCDC;
+  text-align: center;
+  padding-right: 0px;
+  padding-left: 0px;
+  text-transform: uppercase;
 }
 
 div.day.selected {
-  background-color: lightcyan;
+  background-color: #A9A9A9;
 }
 
 div.day-details {
@@ -20,4 +24,28 @@ div.day-details {
 
 .day-icon {
   display: inline-block;
+  float: left;
+}
+
+div.day > span {
+  text-align: center;
+}
+
+div.arrow-left, div.arrow-right {
+  text-align: center;
+  line-height: 98px;
+  border: 0px;
+}
+
+div.day-icons {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#prescriptions {
+  padding-right: 5px;
+}
+
+div.week button {
+  width: 100%;
 }

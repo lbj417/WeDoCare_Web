@@ -25,14 +25,19 @@ export class TimelineComponent implements OnInit {
 
   formattedDay: '';
 
+  startDate: '';
+
   constructor(
     private router: Router,
     private timelineService: TimelineService
   ) {}
 
   getTimeline() {
-    this.timelineService.getTimeline()
-      .then(timeline => this.timeline = timeline);
+    this.timelineService.getTimeline(null)
+      .then(timeline => {
+        this.startDate = timeline.days[0].formattedDate;
+        this.timeline = timeline;
+      });
   }
 
   ngOnInit() {
@@ -42,5 +47,23 @@ export class TimelineComponent implements OnInit {
   goToDay(day: Day) {
     this.selectedDay = day;
     this.formattedDay = moment(day.formattedDate).format('dddd MMMM D, YYYY');
+  }
+
+  prevWeek() {
+    let startDate = moment(this.startDate).subtract(1, 'week').format('YYYY-MM-DD');
+    this.timelineService.getTimeline(startDate)
+      .then(timeline => {
+        this.startDate = timeline.days[0].formattedDate;
+        this.timeline = timeline;
+      });
+  }
+
+  nextWeek() {
+    let startDate = moment(this.startDate).add(1, 'week').format('YYYY-MM-DD');
+    this.timelineService.getTimeline(startDate)
+      .then(timeline => {
+        this.startDate = timeline.days[0].formattedDate;
+        this.timeline = timeline;
+      });
   }
 }

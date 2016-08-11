@@ -1,9 +1,11 @@
 <div class="row">
   <h1>{{title}}</h1>
-  <h2>Week of {{timeline.startDate}}</h2>
+  <h2>Week of {{timeline.displayStartDate}}</h2>
 </div>
 <div class="row week show-grid">
-  <div class="col-md-2 arrow-left">Previous Week</div>
+  <div class="col-md-2 arrow-left">
+    <button type="button" class="btn btn-primary btn-lg" (click)="prevWeek()"><img src="app/views/images/back.png">Previous</button>
+  </div>
   <div *ngFor="let day of timeline.days" class="col-md-1 day" (click)="goToDay(day)"
     [class.selected]="day === selectedDay">
     <span>{{day.dayOfWeek}}</span>
@@ -19,11 +21,13 @@
         <img src="app/views/images/checklist.png">
       </div>
       <div class="day-icon" id="questionnaires" *ngIf="day.questionnaires.length">
-        <img src="app/views/images/question.png">
+        <img src="app/views/images/education-quiz.png">
       </div>
     </div>
   </div>
-  <div class="col-md-2 arrow-right">Next Week</div>
+  <div class="col-md-2 arrow-right">
+    <button type="button" class="btn btn-primary btn-lg" (click)="nextWeek()">Next<img src="app/views/images/forward.png"></button>
+  </div>
 </div>
 <div *ngIf="selectedDay" class="row day-details">
   <h3>{{formattedDay}}</h3>
@@ -56,7 +60,7 @@
     <h4>Questionnaires:</h4>
     <ul class="questionnaires">
       <li *ngFor="let questionnaire of selectedDay.questionnaires">
-        Questionnaire
+        <a href="/questionnaire/{{questionnaire.questionnaireId}}">{{questionnaire.category}} Questionnaire</a> Due
       </li>
     </ul>
   </div>
