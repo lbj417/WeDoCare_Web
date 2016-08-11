@@ -9,8 +9,12 @@ export class TimelineService {
 
   constructor(private http: Http) {}
 
-  getTimeline() {
-    return this.http.get(this.getTimelineUrl)
+  getTimeline(startDate) {
+    let url = this.getTimelineUrl;
+    if (startDate) {
+      url += '?startDate=' + startDate;
+    }
+    return this.http.get(url)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
